@@ -2,4 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="azulRusso">#173753</color>
+    <color name="charcoal">#1b4353</color>
+    <color name="editText">#E1E1E1</color>
+    <color name="btn_confirm">#1D70A2</color>
 </resources>

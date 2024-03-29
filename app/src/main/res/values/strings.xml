@@ -1,3 +1,17 @@
 <resources>
-    <string name="app_name">GymApp</string>
+    <string name="app_name">AppTeste</string>
+    <string name="imageApresentacao">Mulher com roupa de academia</string>
+    <string name="btn_login">Vamos começar</string>
+    <string name="btn_cadastrar">Cadastre-se</string>
+    <string name="name_app">GymApp</string>
+    <string name="login">Login</string>
+    <string name="text_conecte">Ou conecte-se com</string>
+    <string name="senha">Senha</string>
+    <string name="email">Email</string>
+    <string name="entrar">Entrar</string>
+    <string name="novo_por_aqui">É novo por aqui?</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="nome">Nome</string>
+    <string name="de_volta_por_aqui">De volta por aqui?</string>
+    <string name="continuar">continue</string>
 </resources>
