@@ -5,21 +5,21 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
-import com.jerson.gymapp.databinding.ActivityTelaCadastrarBinding
+import com.jerson.gymapp.databinding.ActivitySingUpBinding
 import com.jerson.gymapp.service.FirebaseService
 
 
-class TelaCadastrar : AppCompatActivity() {
+class SingUpActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityTelaCadastrarBinding
+    private lateinit var binding: ActivitySingUpBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        binding = ActivityTelaCadastrarBinding.inflate(layoutInflater)
+        binding = ActivitySingUpBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
         binding.textLogin.setOnClickListener {
-            val telaLogin = Intent(this, TelaLogin::class.java)
+            val telaLogin = Intent(this, SignInActivity::class.java)
             startActivity(telaLogin)
         }
 
@@ -37,7 +37,7 @@ class TelaCadastrar : AppCompatActivity() {
 
     }
     private fun navegarTelaHome(){
-        val intent = Intent(this, TelaHome::class.java)
+        val intent = Intent(this, HomeActivity::class.java)
         startActivity(intent)
         finish()
     }

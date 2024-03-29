@@ -14,4 +14,7 @@
     <string name="nome">Nome</string>
     <string name="de_volta_por_aqui">De volta por aqui?</string>
     <string name="continuar">continue</string>
+    <string name="criar_treino">Criar Treino</string>
+    <string name="data">Data</string>
+    <string name="descricao">Descrição</string>
 </resources>

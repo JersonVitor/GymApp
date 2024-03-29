@@ -4,15 +4,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.firebase.auth.FirebaseAuth
-
-import com.jerson.gymapp.databinding.ActivityTelaApresentacaoBinding
-
-class TelaApresentacao : AppCompatActivity() {
-
-    private lateinit var binding: ActivityTelaApresentacaoBinding
+import com.jerson.gymapp.databinding.ActivityApresentacaoBinding
 
 
+class ApresentacaoActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityApresentacaoBinding
 
     override fun onStart() {
         super.onStart()
@@ -25,22 +22,22 @@ class TelaApresentacao : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        binding = ActivityTelaApresentacaoBinding.inflate(layoutInflater)
+        binding = ActivityApresentacaoBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
 
         binding.btnLogin.setOnClickListener{
-            val telaLogin = Intent(this, TelaLogin::class.java)
+            val telaLogin = Intent(this, SignInActivity::class.java)
             startActivity(telaLogin)
         }
         binding.btnCadastrar.setOnClickListener {
-            val telaCadastrar = Intent(this, TelaCadastrar::class.java)
+            val telaCadastrar = Intent(this, SingUpActivity::class.java)
             startActivity(telaCadastrar)
         }
     }
     private fun navegarTelaHome(){
-        val intent = Intent(this, TelaHome::class.java)
+        val intent = Intent(this, HomeActivity::class.java)
         startActivity(intent)
         finish()
     }

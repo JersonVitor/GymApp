@@ -3,16 +3,16 @@ package com.jerson.gymapp.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.jerson.gymapp.databinding.ActivityTelaHomeBinding
+import com.jerson.gymapp.databinding.ActivityHomeBinding
 import com.jerson.gymapp.service.FirebaseService
 
 
-class TelaHome : AppCompatActivity() {
+class HomeActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityTelaHomeBinding
+    private lateinit var binding: ActivityHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        binding = ActivityTelaHomeBinding.inflate(layoutInflater)
+        binding = ActivityHomeBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
