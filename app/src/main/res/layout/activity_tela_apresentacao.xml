@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:contentDescription="@string/imageApresentacao"
         android:scaleType="centerCrop"
-        android:src="@drawable/apresentacao" />
+        android:src="@drawable/background_tela_apresentacao" />
 
     <TextView
         android:layout_width="wrap_content"

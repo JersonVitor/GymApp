@@ -21,11 +21,9 @@
         <activity
             android:name=".activities.TelaCadastrar"
             android:exported="false" />
+
         <activity
             android:name=".activities.TelaApresentacao"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

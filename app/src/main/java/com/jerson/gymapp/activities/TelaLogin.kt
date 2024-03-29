@@ -5,6 +5,7 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
+import com.jerson.gymapp.activities.TelaCadastrar
 import com.jerson.gymapp.databinding.ActivityTelaLoginBinding
 import com.jerson.gymapp.service.FirebaseService
 
@@ -19,7 +20,7 @@ class TelaLogin : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-       binding { view ->
+        binding.btnLoginSubmit.setOnClickListener { view ->
             val email = binding.editEmail.text.toString()
             val senha = binding.editSenha.text.toString()
 
@@ -32,7 +33,7 @@ class TelaLogin : AppCompatActivity() {
             }
         }
 
-        binding.setOnClickListener {
+        binding.textCadastro.setOnClickListener {
             val telaCadastrar = Intent(this, TelaCadastrar::class.java)
             startActivity(telaCadastrar)
         }
