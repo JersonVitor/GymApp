@@ -1,4 +1,4 @@
-package com.jerson.gymapp
+package com.jerson.gymapp.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

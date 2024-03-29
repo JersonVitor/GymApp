@@ -1,4 +1,4 @@
-package com.jerson.gymapp
+package com.jerson.gymapp.activities
 
 import android.content.Intent
 import android.graphics.Color
@@ -19,7 +19,7 @@ class TelaLogin : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        binding.btnLoginSubmit.setOnClickListener { view ->
+       binding { view ->
             val email = binding.editEmail.text.toString()
             val senha = binding.editSenha.text.toString()
 
@@ -32,13 +32,13 @@ class TelaLogin : AppCompatActivity() {
             }
         }
 
-        binding.textCadastro.setOnClickListener {
-            val telaCadastrar = Intent(this,TelaCadastrar::class.java)
+        binding.setOnClickListener {
+            val telaCadastrar = Intent(this, TelaCadastrar::class.java)
             startActivity(telaCadastrar)
         }
     }
     private fun navegarTelaHome(){
-        val intent = Intent(this,TelaHome::class.java)
+        val intent = Intent(this, TelaHome::class.java)
         startActivity(intent)
         finish()
     }

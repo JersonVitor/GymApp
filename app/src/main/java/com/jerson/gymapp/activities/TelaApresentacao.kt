@@ -4,6 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.firebase.auth.FirebaseAuth
+import com.jerson.gymapp.activities.TelaCadastrar
+import com.jerson.gymapp.activities.TelaHome
+import com.jerson.gymapp.activities.TelaLogin
 
 import com.jerson.gymapp.databinding.ActivityTelaApresentacaoBinding
 
@@ -40,7 +43,7 @@ class TelaApresentacao : AppCompatActivity() {
         }
     }
     private fun navegarTelaHome(){
-        val intent = Intent(this,TelaHome::class.java)
+        val intent = Intent(this, TelaHome::class.java)
         startActivity(intent)
         finish()
     }
