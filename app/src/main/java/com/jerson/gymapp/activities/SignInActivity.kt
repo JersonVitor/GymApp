@@ -12,9 +12,11 @@ import com.jerson.gymapp.service.FirebaseService
 class SignInActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySignInBinding
+    private lateinit var firebase: FirebaseService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivitySignInBinding.inflate(layoutInflater)
+        firebase = FirebaseService()
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
@@ -27,7 +29,7 @@ class SignInActivity : AppCompatActivity() {
                 snackbar.setBackgroundTint(Color.RED)
                 snackbar.show()
             }else{
-                if (FirebaseService.loginUsuario(email, senha, view)) navegarTelaHome()
+                if (firebase.loginUsuario(email, senha, view)) navegarTelaHome()
             }
         }
 

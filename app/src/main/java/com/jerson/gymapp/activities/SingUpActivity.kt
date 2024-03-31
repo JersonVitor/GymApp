@@ -12,9 +12,11 @@ import com.jerson.gymapp.service.FirebaseService
 class SingUpActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySingUpBinding
+    private lateinit var firebase : FirebaseService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivitySingUpBinding.inflate(layoutInflater)
+        firebase = FirebaseService()
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
@@ -26,12 +28,13 @@ class SingUpActivity : AppCompatActivity() {
         binding.btnCadastroSubmit.setOnClickListener {view ->
             val email = binding.editEmail.text.toString()
             val senha = binding.editSenha.text.toString()
-            if(email.isEmpty() || senha.isEmpty()){
+            val nome = binding.editNome.text.toString()
+            if(email.isEmpty() || senha.isEmpty() || nome.isEmpty()){
                 val snackbar = Snackbar.make(view,"Preencha todos os campos!",Snackbar.LENGTH_SHORT)
                 snackbar.setBackgroundTint(Color.GREEN)
                 snackbar.show()
             }else{
-                if(FirebaseService.cadastroUsuario(email, senha, view)) navegarTelaHome()
+                if(firebase.cadastroUsuario(email, senha,nome, view)) navegarTelaHome()
             }
         }
 
