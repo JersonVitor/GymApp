@@ -17,4 +17,11 @@
     <string name="criar_treino">Criar Treino</string>
     <string name="data">Data</string>
     <string name="descricao">Descrição</string>
+    <string name="criar_exercicio">Criar Exercício</string>
+    <string name="cadastrar_exerc_cio">cadastrar exercício</string>
+    <string name="carregar_imagem">Carregar imagem</string>
+    <string name="escolher_exercicios">Escolher Exercícios</string>
+    <string name="exercicios">exercicios</string>
+    <string name="salvar">Salvar</string>
+    <string name="deslogar">Deslogar</string>
 </resources>
