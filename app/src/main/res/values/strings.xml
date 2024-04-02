@@ -26,4 +26,5 @@
     <string name="deslogar">Deslogar</string>
     <string name="teste">teste</string>
     <string name="horario">Horario</string>
+    <string name="cadastrar_treino">Cadastrar treino</string>
 </resources>

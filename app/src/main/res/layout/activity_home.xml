@@ -14,7 +14,7 @@
         android:id="@+id/btn_cd_treino"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/cadastrar_exerc_cio"
+        android:text="@string/cadastrar_treino"
          />
     <Button
         android:id="@+id/btn_deslogar"

@@ -39,12 +39,20 @@ class CadTreinoActivity : AppCompatActivity() {
 
     }
 
+    /**
+     * Navegação para a tela escolher exercícios
+     */
+
     private fun navegarEscolherExercicios() {
         val intent = Intent(this,EscExerciciosActivity::class.java)
         intent.putExtra("nomeTreino",treino.nome)
         startActivity(intent)
         finish()
     }
+
+    /**
+     * Método que exibe o calendário para escolher a data
+     */
     private fun showDatePickerDialog() {
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
@@ -67,6 +75,10 @@ class CadTreinoActivity : AppCompatActivity() {
         )
         datePickerDialog.show()
     }
+
+    /**
+     * Método que extrai os dados dos textView
+     */
 
     private fun extraiDados() {
         treino.nome = binding.editNome.text.toString()

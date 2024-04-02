@@ -37,11 +37,12 @@ class CadExercicioActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-
+        // Configuração do botão para submeter o exercício
         binding.btnExercicioSubmit.setOnClickListener {view ->
             exercicio.nome = binding.editNome.text.toString()
             exercicio.descricao = binding.editDescricao.text.toString()
             firebase.gravarExercicio(exercicio){
+                //Envio da imagem
                 StorageService.uploadImage(exercicio) { confirm, progress ->
                     binding.progressBar.progress = progress
                     if (confirm) {
@@ -67,6 +68,10 @@ class CadExercicioActivity : AppCompatActivity() {
         }
 
     }
+
+    /**
+     * Navega para a tela principal.
+     */
     private fun telaHome(){
         val intent = Intent(this,HomeActivity::class.java)
         startActivity(intent)
@@ -112,6 +117,9 @@ class CadExercicioActivity : AppCompatActivity() {
                 else ->requestGaleria.launch(PERMISSAO_GALERIA)
         }
     }
+    /**
+     * Exibe o diálogo para solicitar permissão de acesso à galeria.
+     */
     private fun dialogPermissao(){
         val builder = AlertDialog.Builder(this)
             .setTitle("Permissão a Galeria")

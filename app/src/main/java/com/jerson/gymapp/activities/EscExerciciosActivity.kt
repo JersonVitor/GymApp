@@ -25,7 +25,6 @@ class EscExerciciosActivity : AppCompatActivity() {
         val recyclerViewExercicio = binding.recyclerViewExercicios
         recyclerViewExercicio.layoutManager = LinearLayoutManager(this)
         recyclerViewExercicio.setHasFixedSize(true)
-
         exercicioAdapter = ExercicioAdapter(this,exercicioList)
         recyclerViewExercicio.adapter = exercicioAdapter
         getExercicio()
@@ -43,6 +42,10 @@ class EscExerciciosActivity : AppCompatActivity() {
             }
         }
     }
+
+    /**
+     * Método que pega todos os exercícios disponíveis
+     */
 
     private fun getExercicio() {
         firebase.getAllExercicios {list ->
