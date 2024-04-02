@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "218791969201",
+    "project_id": "teste-leal-app",
+    "storage_bucket": "teste-leal-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:218791969201:android:bf14b209cfcf3b51537d90",
+        "android_client_info": {
+          "package_name": "com.jerson.gymapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "218791969201-dhug40ub3cdh5ssctgknln4g7btn5nf4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDdwEhq-Wq3F_WHcsHKBUqr6hhXhrGpq8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "218791969201-dhug40ub3cdh5ssctgknln4g7btn5nf4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
