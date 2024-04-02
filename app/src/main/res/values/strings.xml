@@ -15,7 +15,7 @@
     <string name="de_volta_por_aqui">De volta por aqui?</string>
     <string name="continuar">continue</string>
     <string name="criar_treino">Criar Treino</string>
-    <string name="data">Data</string>
+    <string name="data">Selecione a data</string>
     <string name="descricao">Descrição</string>
     <string name="criar_exercicio">Criar Exercício</string>
     <string name="cadastrar_exerc_cio">cadastrar exercício</string>
@@ -24,4 +24,6 @@
     <string name="exercicios">exercicios</string>
     <string name="salvar">Salvar</string>
     <string name="deslogar">Deslogar</string>
+    <string name="teste">teste</string>
+    <string name="horario">Horario</string>
 </resources>

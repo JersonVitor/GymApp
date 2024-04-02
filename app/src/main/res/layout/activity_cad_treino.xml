@@ -19,11 +19,13 @@
         android:hint="@string/nome"
         android:inputType="text"
         android:autofillHints="no"/>
+
     <EditText
         android:id="@+id/edit_data"
         style="@style/editText"
         android:hint="@string/data"
-        android:inputType="date"
+        android:inputType="none"
+        android:focusable="false"
         android:autofillHints="no"/>
     <EditText
         android:id="@+id/edit_descricao"

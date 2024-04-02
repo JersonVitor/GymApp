@@ -24,6 +24,7 @@ class ExercicioAdapter(private val context: Context,private val exercicioList: M
     override fun onBindViewHolder(holder: ExercicioViewHolder, position: Int) {
         val exercicio = exercicioList[position]
         holder.bind(exercicio)
+
     }
 
     inner class ExercicioViewHolder(binding: ExercicioitemBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -35,7 +36,7 @@ class ExercicioAdapter(private val context: Context,private val exercicioList: M
         fun bind(exercicio: Exercicio) {
             nomeExercicio.text = exercicio.nome
             descricaoExrcicio.text = exercicio.descricao
-            imgExercicio.setImageURI(Uri.parse(exercicio.imagem))
+            imgExercicio.setImageURI(exercicio.imagem)
 
             itemView.isSelected = exercicio.selecionado
             checkItem.isSelected = exercicio.selecionado

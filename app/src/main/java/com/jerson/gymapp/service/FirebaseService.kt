@@ -3,6 +3,7 @@ package com.jerson.gymapp.service
 
 
 import android.graphics.Color
+import android.net.Uri
 import android.util.Log
 import android.view.View
 import com.google.android.material.snackbar.Snackbar
@@ -13,43 +14,54 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.jerson.gymapp.model.Exercicio
 import com.jerson.gymapp.model.Treino
 
 
 class FirebaseService {
 
-       private lateinit var firebase: FirebaseAuth
+       private  var firebase = FirebaseAuth.getInstance()
        private var db = FirebaseFirestore.getInstance()
 
-       private fun init(){
-              firebase = FirebaseAuth.getInstance()
-       }
 
+
+       fun user() = firebase.currentUser
        private fun currentUser(): String {
-              init()
               return firebase.currentUser!!.uid
        }
 
 
        fun gravarExercicio(exercicio: Exercicio,callback: () -> Unit){
+              val exercicioDB = hashMapOf(
+                     "nome" to exercicio.nome,
+                     "descricao" to exercicio.descricao,
+                     "imagem" to exercicio.imagem.toString()
 
-              db.collection("Exercício").document(exercicio.nome)
-                     .set(exercicio).addOnCompleteListener {
+              )
+
+              db.collection("exercicio").document(exercicio.nome)
+                     .set(
+                            exercicioDB
+                     ).addOnCompleteListener {
                             Log.d("db","Exercicio salvo com sucesso")
                             callback()
                      }.addOnFailureListener{
-                            Log.d("db",it.message.toString())
+                            Log.d("o erro ta aqui",it.message.toString())
                      }
        }
 
        fun gravarListIdExercicio(nomeTreino: String,nomeExercicios: List<String>,callback: () -> Unit){
+              val mapExercicios = hashMapOf<String,List<String>>(
+                     "exercicios" to nomeExercicios.toList()
+              )
               db.collection("Usuarios")
                      .document(currentUser())
                      .collection("Treino")
                      .document(nomeTreino)
                      .set(
-                       nomeExercicios,
+                      mapExercicios,
                             SetOptions.merge()
                      ).addOnCompleteListener {
                             Log.d("db","lista de exercicios salvo com sucesso")
@@ -60,11 +72,17 @@ class FirebaseService {
        }
 
        fun gravarTreino(treino: Treino,callback: () -> Unit){
+
+             val treinoDB = hashMapOf(
+                     "nome" to treino.nome,
+                     "data" to treino.data,
+                     "descricao" to treino.descricao
+              )
               db.collection("Usuarios")
                      .document(currentUser())
                      .collection("Treino")
                      .document(treino.nome)
-                     .set(treino)
+                     .set(treinoDB)
                      .addOnCompleteListener {
                             Log.d("db","Treino salvo com sucesso")
                             callback()
@@ -74,26 +92,28 @@ class FirebaseService {
 
        }
 
-       fun getAllExercicios(callback: ( exercicioList : MutableList<Exercicio>) ->Unit){
-
-              db.collection("Exercicios")
-                     .get()
-                     .addOnSuccessListener { result ->
-                            val exercicioList : MutableList<Exercicio> = mutableListOf()
-                            for (document in result) {
-                                   exercicioList.add(Exercicio(
-                                          document.getString("nome")!!,
-                                          document.getString("descricao")!!,
-                                          document.getString("imagem"),
-                                          selecionado = false
-                                   ))
+       fun getAllExercicios(callback: ( exercicioList : MutableList<Exercicio>) ->Unit) {
+              val exercicioList: MutableList<Exercicio> = mutableListOf()
+              db.collection("exercicio").get()
+                     .addOnSuccessListener { documents ->
+                            for (document in documents) {
+                                  exercicioList.add(
+                                         Exercicio(
+                                                document.data["nome"].toString(),
+                                                document.data["descricao"].toString(),
+                                                Uri.parse(document.data["nome"].toString()),
+                                                false
+                                  )
+                                  )
                             }
                             callback(exercicioList)
                      }
                      .addOnFailureListener { exception ->
-                            Log.d("db", "Error getting documents: ", exception)
+                            println("Erro ao recuperar documentos: $exception")
                      }
-       }
+              }
+
+
 
        private fun gravarUsuario() {
               db.collection("Usuarios")
@@ -108,16 +128,16 @@ class FirebaseService {
 
 
 
-       fun cadastroUsuario(email: String, senha: String, nome: String, view: View) : Boolean{
+       fun cadastroUsuario(email: String, senha: String, view: View) : Boolean{
               var resp = true
-              init()
+
               firebase.createUserWithEmailAndPassword(email,senha).addOnCompleteListener{ cadastro ->
                      if (cadastro.isSuccessful){
                             val snackbar = Snackbar.make(view,"Cadastro feito com sucesso",
                                    Snackbar.LENGTH_SHORT)
                             snackbar.setBackgroundTint(Color.GREEN)
                             snackbar.show()
-                            gravarUsuario()
+                            //gravarUsuario()
                      }
 
               }.addOnFailureListener{exception ->
@@ -128,7 +148,7 @@ class FirebaseService {
        }
        fun loginUsuario(email: String,senha: String,view: View) : Boolean{
               var resp = true
-              init()
+
               firebase.signInWithEmailAndPassword(email,senha).addOnCompleteListener {login ->
                      if (login.isSuccessful){
                             val snackbar = Snackbar.make(view,"Login feito com sucesso", Snackbar.LENGTH_SHORT)
@@ -142,8 +162,9 @@ class FirebaseService {
               return resp
        }
        fun deslogarUsuario(){
-              init()
-              firebase.signOut()
+              if(firebase.currentUser != null){
+                     firebase.signOut()
+              }
        }
        private fun exceptionFirebase(exception: Exception,view: View) {
               val mensagem = when(exception){
@@ -158,7 +179,9 @@ class FirebaseService {
               snackbar.show()
        }
 
-
+       fun lerTeste() {
+              TODO("Not yet implemented")
+       }
 
 
 }

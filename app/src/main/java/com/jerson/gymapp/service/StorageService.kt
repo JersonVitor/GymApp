@@ -12,31 +12,31 @@ import com.jerson.gymapp.model.Exercicio
 
 object StorageService {
     private lateinit var storage : StorageReference
-    private fun initStorage(caminho: String){
-        storage = FirebaseStorage.getInstance(Network.pathStorage.name).reference.child(caminho)
+    private fun initStorage(caminho: String) {
+        storage = FirebaseStorage.getInstance().getReference(Network.pathStorage.toString()).child(caminho)
     }
 
+    fun uploadImage(exercicio: Exercicio,callback: (sucess: Boolean,progress: Int) -> Unit){
 
-    fun uploadImage(exercicio: Exercicio,callback: (progress: Int) -> Unit) : Boolean{
-        var resp = false
-        val uriImage = Uri.parse(exercicio.imagem)
+        val uriImage = exercicio.imagem
         initStorage("images/${exercicio.nome}.jpg")
-        val uploadTask = storage.putFile(uriImage)
+        val uploadTask = storage.putFile(uriImage!!)
         uploadTask.addOnProgressListener {(bytesTransferred, totalByteCount) ->
             val progress = (100 * bytesTransferred) / totalByteCount
-            callback(progress.toInt())
+            callback(false,progress.toInt())
             Log.d("storage", "Upload is $progress% done")
         }.addOnCompleteListener{
-            resp = true
+            callback(true,100)
         }.addOnFailureListener{
-            //TODO função de exception
+            callback(false,0)
+            Log.d("storage", it.message.toString())
         }
-        return resp
+
     }
 
     fun downloadImage(exercicio: Exercicio,callback: (uri: Uri) -> Unit)  {
 
-        val uriImage = Uri.parse(exercicio.imagem)
+        val uriImage = exercicio.imagem
         initStorage("images/${exercicio.nome}.jpg")
         var uploadTask = storage.downloadUrl
             .addOnCompleteListener { uri ->

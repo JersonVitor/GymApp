@@ -14,8 +14,9 @@ class EscExerciciosActivity : AppCompatActivity() {
     private lateinit var exercicioAdapter : ExercicioAdapter
     private var exercicioList : MutableList<Exercicio> = mutableListOf()
     private lateinit var firebase : FirebaseService
-    private var nomeTreino = intent.extras!!.getString("nomeTreino")
+    private lateinit var nomeTreino: String
     override fun onCreate(savedInstanceState: Bundle?) {
+        nomeTreino = intent.extras?.getString("nomeTreino") ?: ""
         binding = ActivityEscExerciciosBinding.inflate(layoutInflater)
         firebase = FirebaseService()
         super.onCreate(savedInstanceState)
@@ -24,6 +25,7 @@ class EscExerciciosActivity : AppCompatActivity() {
         val recyclerViewExercicio = binding.recyclerViewExercicios
         recyclerViewExercicio.layoutManager = LinearLayoutManager(this)
         recyclerViewExercicio.setHasFixedSize(true)
+
         exercicioAdapter = ExercicioAdapter(this,exercicioList)
         recyclerViewExercicio.adapter = exercicioAdapter
         getExercicio()
@@ -34,7 +36,7 @@ class EscExerciciosActivity : AppCompatActivity() {
                 .filter { it.selecionado }
                 .map { it.nome }
 
-                firebase.gravarListIdExercicio(nomeTreino!!,confirmedExercicio){
+                firebase.gravarListIdExercicio(nomeTreino,confirmedExercicio){
                 val intent = Intent(this,HomeActivity::class.java)
                 startActivity(intent)
                 finish()
@@ -44,7 +46,11 @@ class EscExerciciosActivity : AppCompatActivity() {
 
     private fun getExercicio() {
         firebase.getAllExercicios {list ->
-            exercicioList = list
+
+            exercicioList.clear()
+            exercicioList.addAll(list)
+
+            exercicioAdapter.notifyDataSetChanged()
         }
     }
 }

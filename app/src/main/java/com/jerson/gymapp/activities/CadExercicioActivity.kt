@@ -7,12 +7,12 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.net.Uri
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.Settings
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 import com.jerson.gymapp.databinding.ActivityCadExercicioBinding
@@ -25,7 +25,7 @@ class CadExercicioActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityCadExercicioBinding
     private lateinit var dialog: AlertDialog
-    private lateinit var exercicio: Exercicio
+    private var exercicio = Exercicio()
     private lateinit var firebase: FirebaseService
 
 
@@ -39,16 +39,23 @@ class CadExercicioActivity : AppCompatActivity() {
 
 
         binding.btnExercicioSubmit.setOnClickListener {view ->
-            exercicio.nome
-            exercicio.descricao
+            exercicio.nome = binding.editNome.text.toString()
+            exercicio.descricao = binding.editDescricao.text.toString()
             firebase.gravarExercicio(exercicio){
-                if(StorageService.uploadImage(exercicio){ progress ->
-                        binding.progressBar.progress = progress
-                    })  telaHome()
-                else {
-                    val snackbar = Snackbar.make(view,"não foi possível enviar a imagem",Snackbar.LENGTH_SHORT)
-                    snackbar.setBackgroundTint(Color.RED)
-                    snackbar.show()
+                StorageService.uploadImage(exercicio) { confirm, progress ->
+                    binding.progressBar.progress = progress
+                    if (confirm) {
+                        telaHome()
+                    } else {
+                        val snackbar = Snackbar.make(
+                            view,
+                            "não foi possível enviar a imagem",
+                            Snackbar.LENGTH_SHORT
+                        )
+                        snackbar.setBackgroundTint(Color.RED)
+                        snackbar.show()
+                    }
+
                 }
 
             }
@@ -83,9 +90,10 @@ class CadExercicioActivity : AppCompatActivity() {
     private val resultGaleria =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ result ->
             if(result.resultCode == Activity.RESULT_OK && result.data != null){
+
                 binding.imageExercicio.setImageURI(null)
                 binding.imageExercicio.setImageURI(result.data?.data)
-                exercicio.imagem = result.data?.dataString
+                exercicio.imagem = result.data?.data
             }
         }
 
@@ -110,7 +118,7 @@ class CadExercicioActivity : AppCompatActivity() {
             .setMessage("Precisamos do acesso a galeria, gostaria de permitir agora? ")
             .setNegativeButton("Não") {_, _ ->
                 dialog.dismiss()
-            }.setPositiveButton(""){ _, _ ->
+            }.setPositiveButton("Sim"){ _, _ ->
                 val intent = Intent(
                         Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
                         Uri.fromParts("package",packageName,null)

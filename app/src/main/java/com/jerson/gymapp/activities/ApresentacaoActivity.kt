@@ -5,16 +5,19 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.firebase.auth.FirebaseAuth
 import com.jerson.gymapp.databinding.ActivityApresentacaoBinding
+import com.jerson.gymapp.service.FirebaseService
 
 
 class ApresentacaoActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityApresentacaoBinding
+    private lateinit var firebase : FirebaseService
 
     override fun onStart() {
         super.onStart()
-        val user = FirebaseAuth.getInstance().currentUser
-        if(user != null){
+        firebase = FirebaseService()
+
+        if(firebase.user() != null){
             navegarTelaHome()
         }
 

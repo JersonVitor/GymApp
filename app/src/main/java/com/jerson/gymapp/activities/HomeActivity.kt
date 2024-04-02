@@ -14,6 +14,7 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityHomeBinding.inflate(layoutInflater)
+        firebase = FirebaseService()
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
@@ -34,6 +35,9 @@ class HomeActivity : AppCompatActivity() {
         val telaApresentacao = Intent(this,ApresentacaoActivity::class.java)
         startActivity(telaApresentacao)
         finish()
+        }
+        binding.btnTeste.setOnClickListener{
+            firebase.lerTeste()
         }
 
     }

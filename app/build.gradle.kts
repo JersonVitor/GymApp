@@ -50,6 +50,7 @@ dependencies {
     implementation("com.google.android.gms:play-services-auth:21.0.0")
     implementation ("com.facebook.android:facebook-android-sdk:latest.release")
     implementation("com.google.firebase:firebase-auth-ktx:22.3.1")
+    implementation("androidx.activity:activity:1.8.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")

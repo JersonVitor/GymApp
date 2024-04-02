@@ -6,6 +6,8 @@ import android.os.Parcelable
 
 data class Exercicio(var nome: String,
                 var descricao: String,
-                var imagem: String?,
+                var imagem: Uri?,
                 var selecionado: Boolean
-)
+) {
+    constructor() : this("","",null,false)
+}

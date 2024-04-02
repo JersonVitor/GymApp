@@ -34,7 +34,7 @@ class SingUpActivity : AppCompatActivity() {
                 snackbar.setBackgroundTint(Color.GREEN)
                 snackbar.show()
             }else{
-                if(firebase.cadastroUsuario(email, senha,nome, view)) navegarTelaHome()
+                if(firebase.cadastroUsuario(email, senha, view)) navegarTelaHome()
             }
         }
 
