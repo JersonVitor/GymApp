@@ -109,12 +109,12 @@ class CadExercicioActivity : AppCompatActivity() {
         val permissaoAceita = vefificadorPermissao(PERMISSAO_GALERIA)
 
         when{
-                permissaoAceita -> {
-                            resultGaleria.launch(Intent(Intent.ACTION_PICK,
-                                MediaStore.Images.Media.EXTERNAL_CONTENT_URI))
-                }
-                shouldShowRequestPermissionRationale(PERMISSAO_GALERIA) -> dialogPermissao()
-                else ->requestGaleria.launch(PERMISSAO_GALERIA)
+            permissaoAceita -> {
+                resultGaleria.launch(Intent(Intent.ACTION_PICK,
+                    MediaStore.Images.Media.EXTERNAL_CONTENT_URI))
+            }
+            shouldShowRequestPermissionRationale(PERMISSAO_GALERIA) -> dialogPermissao()
+            else ->requestGaleria.launch(PERMISSAO_GALERIA)
         }
     }
     /**
@@ -128,8 +128,8 @@ class CadExercicioActivity : AppCompatActivity() {
                 dialog.dismiss()
             }.setPositiveButton("Sim"){ _, _ ->
                 val intent = Intent(
-                        Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                        Uri.fromParts("package",packageName,null)
+                    Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                    Uri.fromParts("package",packageName,null)
                 )
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)

@@ -31,14 +31,12 @@ class HomeActivity : AppCompatActivity() {
 
 
         binding.btnDeslogar.setOnClickListener {
-        firebase.deslogarUsuario()
-        val telaApresentacao = Intent(this,ApresentacaoActivity::class.java)
-        startActivity(telaApresentacao)
-        finish()
+            firebase.deslogarUsuario()
+            val telaApresentacao = Intent(this,ApresentacaoActivity::class.java)
+            startActivity(telaApresentacao)
+            finish()
         }
-        binding.btnTeste.setOnClickListener{
-            firebase.lerTeste()
-        }
+
 
     }
 

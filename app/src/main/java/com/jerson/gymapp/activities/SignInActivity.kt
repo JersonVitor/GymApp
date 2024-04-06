@@ -34,7 +34,7 @@ class SignInActivity : AppCompatActivity() {
         }
 
         binding.textCadastro.setOnClickListener {
-            val telaCadastrar = Intent(this, SingUpActivity::class.java)
+            val telaCadastrar = Intent(this, SignUpActivity::class.java)
             startActivity(telaCadastrar)
         }
     }

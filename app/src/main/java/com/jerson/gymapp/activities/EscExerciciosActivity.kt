@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.jerson.gymapp.adapter.ExercicioAdapter
 import com.jerson.gymapp.databinding.ActivityEscExerciciosBinding
 import com.jerson.gymapp.model.Exercicio
+
 import com.jerson.gymapp.service.FirebaseService
 
 class EscExerciciosActivity : AppCompatActivity() {
@@ -35,7 +36,7 @@ class EscExerciciosActivity : AppCompatActivity() {
                 .filter { it.selecionado }
                 .map { it.nome }
 
-                firebase.gravarListIdExercicio(nomeTreino,confirmedExercicio){
+            firebase.gravarListIdExercicio(nomeTreino,confirmedExercicio){
                 val intent = Intent(this,HomeActivity::class.java)
                 startActivity(intent)
                 finish()

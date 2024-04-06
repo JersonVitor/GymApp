@@ -5,17 +5,17 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
-import com.jerson.gymapp.databinding.ActivitySingUpBinding
+import com.jerson.gymapp.databinding.ActivitySignUpBinding
 import com.jerson.gymapp.service.FirebaseService
 
 
-class SingUpActivity : AppCompatActivity() {
+class SignUpActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivitySingUpBinding
+    private lateinit var binding: ActivitySignUpBinding
     private lateinit var firebase : FirebaseService
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        binding = ActivitySingUpBinding.inflate(layoutInflater)
+        binding = ActivitySignUpBinding.inflate(layoutInflater)
         firebase = FirebaseService()
         super.onCreate(savedInstanceState)
         setContentView(binding.root)

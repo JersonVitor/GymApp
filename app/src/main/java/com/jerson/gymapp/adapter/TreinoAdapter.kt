@@ -42,7 +42,7 @@ class TreinoAdapter(private val context: Context,private val treinoList: Mutable
             nomeExercicio.text = treino.nome
             horario.text = SimpleDateFormat("dd/MM", Locale.getDefault()).format(treino.data.toDate().toString())
             itemView.setOnClickListener{
-                    val intent = Intent(context,TreinoActivity::class.java)
+                val intent = Intent(context,TreinoActivity::class.java)
                 intent.putExtra("treinoNome",nomeExercicio.text.toString())
                 context.startActivity(intent)
 

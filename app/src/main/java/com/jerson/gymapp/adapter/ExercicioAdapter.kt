@@ -15,7 +15,7 @@ class ExercicioAdapter(private val context: Context,private val exercicioList: M
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExercicioViewHolder {
-       val listItem = ExercicioitemBinding.inflate(LayoutInflater.from(context),parent,false)
+        val listItem = ExercicioitemBinding.inflate(LayoutInflater.from(context),parent,false)
         return ExercicioViewHolder(listItem)
     }
 

@@ -30,10 +30,10 @@ object StorageService {
         val uriImage = exercicio.imagem
         initStorage("images/${exercicio.nome}.jpg")
         val uploadTask = storage.putFile(uriImage!!)
-        uploadTask.addOnProgressListener { (bytesTransferred, totalByteCount) ->
-            val progress = (100 * bytesTransferred) / totalByteCount
-            callback(false, progress.toInt())
-            Log.d("storage", "Upload is $progress% done")
+        uploadTask.addOnProgressListener {
+                val progress = (100 * it.bytesTransferred) / it.totalByteCount
+                callback(false, progress.toInt())
+                Log.d("storage", "Upload is $progress% done")
         }.addOnCompleteListener {
             callback(true, 100)
         }.addOnFailureListener {

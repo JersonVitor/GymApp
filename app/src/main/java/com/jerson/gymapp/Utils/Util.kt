@@ -9,8 +9,8 @@ object Util {
 
     fun converterTextoParaTimestamp(textoData: String): Timestamp {
         val formatoData = SimpleDateFormat.getDateInstance()
-            val data = formatoData.parse(textoData)
-            return Timestamp(data!!)
+        val data = formatoData.parse(textoData)
+        return Timestamp(data!!)
 
     }
 }
