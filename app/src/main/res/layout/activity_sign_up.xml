@@ -1,80 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_gravity="start"
+        android:layout_marginTop="30dp"
+        android:textStyle="bold"
+        android:text="@string/cadastro"
+        android:textSize="50sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
-        android:text="@string/cadastrar"
-        android:textSize="30sp" />
+        android:layout_marginStart="20dp"
+        android:layout_gravity="start"
+        android:text="@string/bem_vindo_cadastro"
+        android:textSize="18sp"/>
 
 
     <EditText
         android:id="@+id/edit_nome"
         style="@style/editText"
+        android:drawableStart="@drawable/ic_person"
+        android:drawablePadding="8dp"
         android:inputType="text"
         android:hint="@string/nome"
         android:autofillHints="no"/>
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"/>
 
     <EditText
         android:id="@+id/edit_email"
         style="@style/editText"
         android:hint="@string/email"
+        android:drawableStart="@drawable/ic_email"
+        android:drawablePadding="8dp"
         android:inputType="textEmailAddress"
         android:autofillHints="emailAddress"/>
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:hint="@string/senha"
         app:passwordToggleEnabled="true"
         app:hintEnabled="false">
-
         <EditText
             android:id="@+id/edit_senha"
             style="@style/editText"
             android:maxLines="1"
+            android:drawableStart="@drawable/ic_lock"
+            android:drawablePadding="8dp"
             android:hint="@string/senha"
             android:importantForAutofill="no"
             android:inputType="textPassword" />
-
-
-
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btn_CadastroSubmit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="30dp"
         android:backgroundTint="@color/btn_confirm"
-        android:text="@string/continuar"
+        android:text="@string/entrar"
         android:textColor="@color/white"
-        app:cornerRadius="5dp" />
+        app:cornerRadius="10dp" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <View
+            android:layout_width="80dp"
+            android:layout_height="2dp"
+            android:background="@color/black"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="@string/continue_with"/>
+        <View
+            android:layout_width="80dp"
+            android:layout_height="2dp"
+            android:background="@color/black"/>
+    </LinearLayout>
 
-
-
-
-
-
-
-
+    <com.google.android.gms.common.SignInButton
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="50dp"
 
         >
 

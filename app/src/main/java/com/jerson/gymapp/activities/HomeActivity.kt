@@ -18,7 +18,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        binding.btnCdExercicio.setOnClickListener {
+        /*binding.btnCdExercicio.setOnClickListener {
             val cadExercicioActivity = Intent(this,CadExercicioActivity::class.java)
             startActivity(cadExercicioActivity)
 
@@ -36,7 +36,7 @@ class HomeActivity : AppCompatActivity() {
             startActivity(telaApresentacao)
             finish()
         }
-
+*/
 
     }
 

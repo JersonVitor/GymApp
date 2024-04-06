@@ -12,15 +12,14 @@
 
     <style name="editText">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">48dp</item>
-        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_height">60dp</item>
         <item name="android:layout_marginLeft">20dp</item>
         <item name="android:layout_marginRight">20dp</item>
+        <item name="android:textColorHint">@color/gray</item>
         <item name="android:paddingLeft">15dp</item>
         <item name="android:background">@drawable/custom_edittext</item>
         <item name="android:gravity">center_vertical</item>
-        <item name="android:textColorHint">@color/black</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
 </resources>

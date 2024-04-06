@@ -11,11 +11,15 @@ import com.jerson.gymapp.model.Exercicio
 import com.jerson.gymapp.service.FirebaseService
 
 class EscExerciciosActivity : AppCompatActivity() {
+
+
     private lateinit var binding : ActivityEscExerciciosBinding
     private lateinit var exercicioAdapter : ExercicioAdapter
     private var exercicioList : MutableList<Exercicio> = mutableListOf()
     private lateinit var firebase : FirebaseService
     private lateinit var nomeTreino: String
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         nomeTreino = intent.extras?.getString("nomeTreino") ?: ""
         binding = ActivityEscExerciciosBinding.inflate(layoutInflater)

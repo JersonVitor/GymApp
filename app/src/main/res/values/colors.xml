@@ -4,8 +4,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="azulRusso">#173753</color>
     <color name="charcoal">#1b4353</color>
-    <color name="editText">#E1E1E1</color>
+    <color name="editText">#EDECEC</color>
     <color name="btn_confirm">#1D70A2</color>
     <color name="selectExercicio">#03A9F4</color>
+    <color name="gray">#242424</color>
 
 </resources>
