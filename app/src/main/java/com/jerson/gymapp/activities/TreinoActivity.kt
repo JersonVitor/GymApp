@@ -16,5 +16,7 @@ class TreinoActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+
+
     }
 }
