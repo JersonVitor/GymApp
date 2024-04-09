@@ -6,14 +6,14 @@ import android.util.Log
 import android.view.View
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.FirebaseNetworkException
+import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
+import com.jerson.gymapp.Utils.Util
 import com.jerson.gymapp.model.Exercicio
 import com.jerson.gymapp.model.Treino
 
@@ -95,7 +95,7 @@ class FirebaseService {
         )
         db.collection("Usuarios")
             .document(currentUser())
-            .collection("Treino")
+            .collection("Treinos")
             .document(treino.nome)
             .set(treinoDB)
             .addOnCompleteListener {
@@ -219,6 +219,29 @@ class FirebaseService {
         val snackbar = Snackbar.make(view, mensagem, Snackbar.LENGTH_SHORT)
         snackbar.setBackgroundTint(Color.RED)
         snackbar.show()
+    }
+
+    fun getAllTreinos(callback: (List<Treino>, error: Exception?) -> Unit) {
+        val treinoList :MutableList<Treino> = mutableListOf()
+        db.collection("Usuarios")
+            .document(currentUser())
+            .collection("Treinos")
+            .get()
+            .addOnSuccessListener {documents ->
+                for (document in documents){
+                    treinoList.add(
+                        Treino(
+                            document.getString("nome")!!,
+                            Util.converterTextoParaTimestamp(document.getString("data")!!),
+                            ""
+                        )
+                    )
+
+                }
+                callback(treinoList,null)
+            }.addOnFailureListener{
+                callback(listOf(),it)
+            }
     }
 
 

@@ -26,7 +26,6 @@ class EscExerciciosActivity : AppCompatActivity() {
         firebase = FirebaseService()
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
         val recyclerViewExercicio = binding.recyclerViewExercicios
         recyclerViewExercicio.layoutManager = LinearLayoutManager(this)
         recyclerViewExercicio.setHasFixedSize(true)
@@ -43,6 +42,7 @@ class EscExerciciosActivity : AppCompatActivity() {
             firebase.gravarListIdExercicio(nomeTreino,confirmedExercicio){
                 val intent = Intent(this,HomeActivity::class.java)
                 startActivity(intent)
+
                 finish()
             }
         }
@@ -54,10 +54,8 @@ class EscExerciciosActivity : AppCompatActivity() {
 
     private fun getExercicio() {
         firebase.getAllExercicios {list ->
-
             exercicioList.clear()
             exercicioList.addAll(list)
-
             exercicioAdapter.notifyDataSetChanged()
         }
     }

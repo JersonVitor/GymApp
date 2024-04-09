@@ -28,6 +28,15 @@ class PerfilFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+        /*
+
+        binding.btnDeslogar.setOnClickListener {
+            firebase.deslogarUsuario()
+            val telaApresentacao = Intent(this,ApresentacaoActivity::class.java)
+            startActivity(telaApresentacao)
+            finish()
+        }
+*/
     }
 
     override fun onCreateView(
